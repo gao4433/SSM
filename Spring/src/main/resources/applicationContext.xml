@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--    <bean id="userDao" class="cc.gaojie.dao.impl.UserDaoImpl" ></bean>-->
+
+<!--    <bean id="userDao" class="cc.gaojie.factory.StaticFactory" factory-method="getUserDao"></bean>-->
+
+<!--    <bean id="factory" class="cc.gaojie.factory.DynamicFactory" ></bean>-->
+<!--    <bean id="userDao" factory-bean="factory" factory-method="getUserDao"></bean>-->
+
+    <bean id="userDao" class="cc.gaojie.dao.impl.UserDaoImpl" ></bean>
+    <bean id="userService" class="cc.gaojie.service.impl.UserServiceImpl"></bean>
+
+</beans>
