@@ -12,10 +12,21 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @since 1.8
  */
 public class UserServiceImpl implements UserService {
+
+    private UserDao userDao;
+
+    public UserServiceImpl() {
+    }
+
+    public UserServiceImpl(UserDao userDao) {
+        this.userDao = userDao;
+    }
+    /*public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }*/
+
     @Override
     public void save() {
-        ApplicationContext app = new ClassPathXmlApplicationContext("applicationContext.xml");
-        UserDao userDao = (UserDao) app.getBean("userDao");
         userDao.save();
     }
 }
