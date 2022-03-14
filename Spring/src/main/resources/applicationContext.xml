@@ -22,9 +22,49 @@
     <bean id="userService" class="cc.gaojie.service.impl.UserServiceImpl" p:userDao-ref="userDao"></bean>-->
 
     <!--构造方法注入-->
-    <bean id="userDao" class="cc.gaojie.dao.impl.UserDaoImpl"></bean>
+    <!--<bean id="userDao" class="cc.gaojie.dao.impl.UserDaoImpl" ></bean>
     <bean id="userService" class="cc.gaojie.service.impl.UserServiceImpl">
         <constructor-arg name="userDao" ref="userDao"></constructor-arg>
-    </bean>
+    </bean>-->
 
+    <!--普通数据类型的注入-->
+    <!-- <bean id="userDao" class="cc.gaojie.dao.impl.UserDaoImpl" >
+         <property name="userName" value="高杰"/>
+         <property name="age" value="22"/>
+     </bean>-->
+
+    <!--集合数据类型的注入-->
+    <bean id="user1" class="cc.gaojie.domain.User">
+        <property name="name" value="Tom"/>
+        <property name="addr" value="江夏"/>
+    </bean>
+    <bean id="user2" class="cc.gaojie.domain.User">
+        <property name="name" value="Jack"/>
+        <property name="addr" value="十堰"/>
+    </bean>
+     <bean id="userDao" class="cc.gaojie.dao.impl.UserDaoImpl" >
+         <property name="strList">
+             <list>
+                 <value>aaa</value>
+                 <value>bbb</value>
+                 <value>ccc</value>
+             </list>
+         </property>
+         <property name="userMap">
+             <map>
+                 <entry  key="u1" value-ref="user1"></entry>
+                 <entry key="u2" value-ref="user2"></entry>
+             </map>
+         </property>
+         <property name="properties">
+             <props >
+                 <prop key="p1">ppp1</prop>
+                 <prop key="p2">ppp2</prop>
+                 <prop key="p3">ppp3</prop>
+             </props>
+         </property>
+     </bean>
+
+    <import resource="applicationContext-goods.xml"/>
+    <import resource="applicationContext-user.xml"/>
 </beans>

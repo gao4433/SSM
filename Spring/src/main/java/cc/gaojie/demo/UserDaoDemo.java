@@ -11,6 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class UserDaoDemo {
     public static void main(String[] args) {
+        //加载Spring核心文件
         ClassPathXmlApplicationContext app = new ClassPathXmlApplicationContext("applicationContext.xml");
         UserDao userDao = (UserDao) app.getBean("userDao");
         userDao.save();
