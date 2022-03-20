@@ -9,7 +9,7 @@ import java.beans.PropertyVetoException;
 
 /**
  * @author gaojie  gao4433@qq.com
- * @Description
+ * @Description Spring核心配置类
  * @date 2022/3/16 18:13
  * @since 1.8
  */
