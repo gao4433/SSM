@@ -8,4 +8,19 @@
     <!--Controller的组件扫描-->
     <context:component-scan base-package="cc.gaojie.controller"/>
 
+    <!--&lt;!&ndash;Controller的组件扫描&ndash;&gt;
+    <context:component-scan base-package="cc.gaojie">
+        &lt;!&ndash;表示只扫描 cc.gaojie 包下的 Controller 注解&ndash;&gt;
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        &lt;!&ndash;表示不扫描 cc.gaojie 包下的 Controller 注解&ndash;&gt;
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>-->
+
+    <!--配置内部资源解析器-->
+    <bean id="viewResolve" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--跳转时自动拼接前缀和后缀： /jsp/+...+.jsp -->
+        <property name="prefix" value="/jsp/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
 </beans>
