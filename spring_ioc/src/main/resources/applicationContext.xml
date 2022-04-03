@@ -34,11 +34,11 @@
      </bean>-->
 
     <!--集合数据类型的注入-->
-    <bean id="user1" class="cc.gaojie.domain.User">
+    <bean id="user1" class="cc.gaojie.domain.King">
         <property name="name" value="Tom"/>
         <property name="addr" value="江夏"/>
     </bean>
-    <bean id="user2" class="cc.gaojie.domain.User">
+    <bean id="user2" class="cc.gaojie.domain.King">
         <property name="name" value="Jack"/>
         <property name="addr" value="十堰"/>
     </bean>
