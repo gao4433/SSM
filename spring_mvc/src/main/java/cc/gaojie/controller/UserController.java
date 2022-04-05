@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.xml.ws.RequestWrapper;
 import java.io.IOException;
 import java.nio.file.WatchEvent.Kind;
@@ -169,6 +170,36 @@ public class UserController {
     public void save17(Date date) {
         System.out.println(date);
     }
+
+    @RequestMapping(value = "/quick18")
+    @ResponseBody
+    public void save18(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+        System.out.println(request);
+        System.out.println(response);
+        System.out.println(session);
+    }
+
+    /**
+     * 获取User-Agent
+     * @param user_agent
+     */
+    @RequestMapping(value = "/quick19")
+    @ResponseBody
+    public void save19 (@RequestHeader(value = "User-Agent",required = false) String user_agent) {
+        System.out.println(user_agent);
+    }
+
+    /**
+     * 获取cookie
+     * @param jsessionID
+     */
+    @RequestMapping(value = "/quick20")
+    @ResponseBody
+    public void save20 (@CookieValue(value = "JSESSIONID") String jsessionID) {
+        System.out.println(jsessionID);
+    }
+
+
 
 
 }
