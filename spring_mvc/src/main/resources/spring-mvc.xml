@@ -35,10 +35,21 @@
     </bean>
 
     <!--MVC的注解驱动-->
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven conversion-service="conversionService"/>
 
     <!--让原始容器Tomcat寻找静态资源-->
     <mvc:default-servlet-handler/>
 
-    <mvc:resources mapping="/js/**" location="/js/"/>
+<!--    &lt;!&ndash;开发资源的访问&ndash;&gt;-->
+<!--    <mvc:resources mapping="/js/**" location="/js/"/>-->
+
+    <!--声明转换器-->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <list>
+                <bean class="cc.gaojie.converter.DateConverter"></bean>
+            </list>
+        </property>
+    </bean>
+
 </beans>

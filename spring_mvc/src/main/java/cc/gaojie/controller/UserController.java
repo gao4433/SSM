@@ -15,6 +15,7 @@ import javax.xml.ws.RequestWrapper;
 import java.io.IOException;
 import java.nio.file.WatchEvent.Kind;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -153,12 +154,21 @@ public class UserController {
     }
 
     /**
-     * http://localhost:8080/user/quick19/gaojie
+     * http://localhost:8080/user/quick16/gaojie
      * @param username
      */
-    @RequestMapping(value = "/quick19/{username}")
+    @RequestMapping(value = "/quick16/{username}")
     @ResponseBody
-    public void save19(@PathVariable(value = "username") String username) {
+    public void save16(@PathVariable(value = "username") String username) {
         System.out.println(username);
     }
+
+
+    @RequestMapping(value = "/quick17")
+    @ResponseBody
+    public void save17(Date date) {
+        System.out.println(date);
+    }
+
+
 }
