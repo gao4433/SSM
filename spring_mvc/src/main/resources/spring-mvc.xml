@@ -4,7 +4,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-                           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-vc.xsd
+                           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--Controller的组件扫描-->
@@ -37,4 +37,8 @@
     <!--MVC的注解驱动-->
     <mvc:annotation-driven/>
 
+    <!--让原始容器Tomcat寻找静态资源-->
+    <mvc:default-servlet-handler/>
+
+    <mvc:resources mapping="/js/**" location="/js/"/>
 </beans>

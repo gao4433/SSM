@@ -25,4 +25,12 @@ public class King {
     public void setAge(int age) {
         this.age = age;
     }
+
+    @Override
+    public String toString() {
+        return "King{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
