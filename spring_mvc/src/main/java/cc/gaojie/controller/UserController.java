@@ -2,17 +2,19 @@ package cc.gaojie.controller;
 
 import cc.gaojie.domain.King;
 import cc.gaojie.domain.VO;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.support.MultipartFilter;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.xml.ws.RequestWrapper;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.WatchEvent.Kind;
 import java.util.Arrays;
@@ -119,7 +121,7 @@ public class UserController {
 
     @RequestMapping(value = "/quick10")
     @ResponseBody  //直接回写数据而不是跳转
-    public void save10(@RequestParam("name" ) String username, int age) {
+    public void save10(@RequestParam("name") String username, int age) {
         System.out.println(username);
         System.out.println(age);
     }
@@ -156,6 +158,7 @@ public class UserController {
 
     /**
      * http://localhost:8080/user/quick16/gaojie
+     *
      * @param username
      */
     @RequestMapping(value = "/quick16/{username}")
@@ -181,25 +184,61 @@ public class UserController {
 
     /**
      * 获取User-Agent
+     *
      * @param user_agent
      */
     @RequestMapping(value = "/quick19")
     @ResponseBody
-    public void save19 (@RequestHeader(value = "User-Agent",required = false) String user_agent) {
+    public void save19(@RequestHeader(value = "User-Agent", required = false) String user_agent) {
         System.out.println(user_agent);
     }
 
     /**
      * 获取cookie
+     *
      * @param jsessionID
      */
     @RequestMapping(value = "/quick20")
     @ResponseBody
-    public void save20 (@CookieValue(value = "JSESSIONID") String jsessionID) {
+    public void save20(@CookieValue(value = "JSESSIONID") String jsessionID) {
         System.out.println(jsessionID);
     }
 
+    /**
+     * 单文件上传
+     *
+     * @param username
+     * @param uploadFile
+     */
+    @RequestMapping(value = "/quick21")
+    @ResponseBody
+    public void save21(String username, MultipartFile uploadFile) throws IOException {
+        System.out.println(username);
+        System.out.println(uploadFile);
+        //获取上传文件的名称
+        String originalFilename = uploadFile.getOriginalFilename();
+        //转存文件到指定位置
+        uploadFile.transferTo(new File("D:\\Desktop\\upload\\" + originalFilename));
+    }
 
+    /**
+     * 多文件上传
+     * @param username
+     * @param uploadFile
+     */
+    @RequestMapping(value = "/quick22")
+    @ResponseBody
+    public void save22(String username, MultipartFile[] uploadFile) throws IOException {
+        System.out.println(username);
+        for (MultipartFile multipartFile : uploadFile) {
+            System.out.println(multipartFile);
+            //获取上传文件的名称
+            String originalFilename = multipartFile.getOriginalFilename();
+            //转存文件到指定位置
+            multipartFile.transferTo(new File("D:\\Desktop\\upload\\" + originalFilename));
+        }
+
+    }
 
 
 }
