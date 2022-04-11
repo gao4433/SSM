@@ -25,6 +25,14 @@ public class RoleController {
         this.roleService = roleService;
     }
 
+    @RequestMapping("/save")
+    public String save(Role role){
+        roleService.save(role);
+        //重定向到角色列表页
+        return "redirect:/role/list";
+    }
+
+
     @RequestMapping("/list")   //将请求虚拟地址映射到具体的方法上
     public ModelAndView list(){
         ModelAndView modelAndView = new ModelAndView();
