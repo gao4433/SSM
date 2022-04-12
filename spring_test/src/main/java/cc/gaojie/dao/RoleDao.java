@@ -14,4 +14,6 @@ public interface RoleDao {
     List<Role> findAll();
 
     void save(Role role);
+
+    List<Role> findByUserId(Long id);
 }

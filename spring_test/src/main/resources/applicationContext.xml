@@ -30,4 +30,17 @@
     <bean id="roleDao" class="cc.gaojie.dao.impl.RoleDaoImpl">
         <property name="jdbcTemplate" ref="jdbcTemplate"/>
     </bean>
+
+
+    <!--配置 UserService-->
+    <bean id="userService" class="cc.gaojie.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"/>
+        <property name="roleDao" ref="roleDao"/>
+    </bean>
+
+    <!--配置 UserDao-->
+    <bean id="userDao" class="cc.gaojie.dao.impl.UserDaoImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
 </beans>
