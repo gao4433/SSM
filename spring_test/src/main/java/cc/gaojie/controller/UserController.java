@@ -27,6 +27,12 @@ public class UserController {
     @Autowired
     private RoleService roleService;
 
+    @RequestMapping("/save")
+    public String save(User user,Long[] roleIds){
+        userService.save(user,roleIds);
+        return "redirect:/user/list";
+    }
+
     @RequestMapping("/saveUI")     //映射路径
     public ModelAndView saveUI(){
         List<Role> roleList = roleService.list();
