@@ -50,4 +50,12 @@ public class UserServiceImpl implements UserService {
         //向sys_user_role表中存储多条数据
         userDao.saveUserRoleRel(userId,roleIds);
     }
+
+    @Override
+    public void del(Long userId) {
+        //1.删除sys_user_role关系表中数据
+        userDao.delUserRoleRel(userId);
+        //2.删除sys_user表中数据
+        userDao.del(userId);
+    }
 }

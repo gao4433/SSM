@@ -6,6 +6,7 @@ import cc.gaojie.service.RoleService;
 import cc.gaojie.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -52,4 +53,11 @@ public class UserController {
         modelAndView.setViewName("user-list");
         return modelAndView;
     }
+
+    @RequestMapping("/del/{userId}")     //Restful风格参数
+    public String del(@PathVariable("userId") Long userId){
+        userService.del(userId);
+        return "redirect:/user/list";
+    }
+
 }
