@@ -32,6 +32,11 @@
             <mvc:mapping path="/**"/>
             <bean class="cc.gaojie.interceptor.MyInterceptor1"/>
         </mvc:interceptor>
+        <mvc:interceptor>
+            <!--对哪些资源执行拦截操作-->
+            <mvc:mapping path="/**"/>
+            <bean class="cc.gaojie.interceptor.MyInterceptor2"/>
+        </mvc:interceptor>
     </mvc:interceptors>
 
 </beans>
