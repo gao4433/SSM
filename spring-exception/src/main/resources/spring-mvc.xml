@@ -24,15 +24,18 @@
     <!--4、组件扫描  扫描Controller-->
     <context:component-scan base-package="cc.gaojie.controller"/>
 
-    <!--配置异常处理器-->
+<!--    &lt;!&ndash;配置异常处理器&ndash;&gt;
     <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-        <!--<property name="defaultErrorView" value="error"/> -->  <!--默认错误视图-->
-        <property name="exceptionMappings" >     <!--异常映射-->
+        &lt;!&ndash;<property name="defaultErrorView" value="error"/> &ndash;&gt;  &lt;!&ndash;默认错误视图&ndash;&gt;
+        <property name="exceptionMappings" >     &lt;!&ndash;异常映射&ndash;&gt;
             <map>
                 <entry key="java.lang.ClassCastException" value="error1"/>
                 <entry key="cc.gaojie.exception.MyException" value="error2"/>
             </map>
         </property>
-    </bean>
+    </bean>-->
+
+    <!--自定义异常处理器-->
+    <bean class="cc.gaojie.resolver.MyExceptionResolver"/>
 
 </beans>

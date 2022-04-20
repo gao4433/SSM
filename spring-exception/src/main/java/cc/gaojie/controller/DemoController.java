@@ -22,7 +22,7 @@ public class DemoController {
     @RequestMapping(value = "/show")
     public String show() throws FileNotFoundException, MyException {
         System.out.println("show running......");
-        demoService.show1();
+//        demoService.show1();
         //demoService.show2();
         //demoService.show3();
         //demoService.show4();
