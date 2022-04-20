@@ -22,5 +22,15 @@
     <!--组件扫描，扫描 Controller-->
     <context:component-scan base-package="cc.gaojie.controller"/>
 
+    <!--配置权限拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--配置哪些资源拦截-->
+            <mvc:mapping path="/**/"/>
+            <!--配置哪些资源排除拦截-->
+            <mvc:exclude-mapping path="/user/login"/>
+            <bean class="cc.gaojie.interceptor.PrivilegeInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 </beans>

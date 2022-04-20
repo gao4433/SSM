@@ -27,13 +27,13 @@
 <body class="hold-transition login-page">
 	<div class="login-box">
 		<div class="login-logo">
-			<a href="all-admin-index.html"><b>ITCAST</b>后台管理系统</a>
+			<a href="all-admin-index.html">员工数据后台管理系统</a>
 		</div>
 		<!-- /.login-logo -->
 		<div class="login-box-body">
 			<p class="login-box-msg">登录系统</p>
 
-			<form action="${pageContext.request.contextPath}/pages/main.jsp"
+			<form action="${pageContext.request.contextPath}/user/login"
 				method="post">
 				<div class="form-group has-feedback">
 					<input type="text" name="username" class="form-control"

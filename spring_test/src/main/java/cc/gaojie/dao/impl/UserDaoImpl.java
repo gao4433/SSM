@@ -2,6 +2,7 @@ package cc.gaojie.dao.impl;
 
 import cc.gaojie.dao.UserDao;
 import cc.gaojie.domain.User;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -79,5 +80,11 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void del(Long userId) {
         jdbcTemplate.update("delete from sys_user where id = ?", userId);
+    }
+
+    @Override
+    public User findByUsernameAndPassword(String username, String password) throws EmptyResultDataAccessException {
+        User user = jdbcTemplate.queryForObject("select * from sys_user where username = ? and password = ?", new BeanPropertyRowMapper<User>(User.class), username, password);
+        return user;
     }
 }

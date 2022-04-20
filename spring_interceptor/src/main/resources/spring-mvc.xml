@@ -39,10 +39,6 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
-</beans>
 
-  <!--      <mvc:interceptor>-->
-<!--&lt;!&ndash;对哪些资源执行拦截操作&ndash;&gt;-->
-<!--<mvc:mapping path="/**"/>-->
-<!--<bean class="com.itheima.interceptor.MyInterceptor2"/>-->
-<!--</mvc:interceptor>-->
+
+</beans>
