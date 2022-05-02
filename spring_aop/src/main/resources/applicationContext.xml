@@ -6,7 +6,7 @@
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!--目标对象-->
-    <bean id="target" class="cc.gaojie.aop.Target" ></bean>
+    <bean id="target" class="cc.gaojie.aop.Target"></bean>
 
     <!--切面对象-->
     <bean id="myAspect" class="cc.gaojie.aop.MyAspect"></bean>
@@ -15,8 +15,19 @@
     <aop:config>
         <!--声明切面：切点+通知（增强）-->
         <aop:aspect ref="myAspect">
+            <!--抽取切点表达式-->
+            <aop:pointcut id="myPointcut" expression="execution(* cc.gaojie.aop.*.*(..))"/>
             <!--访问save()方法时，使用myAspect的before()方法进行前置增强-->
             <aop:before method="before" pointcut="execution(public void cc.gaojie.aop.Target.save())"></aop:before>
+            <!--<aop:before method="before" pointcut="execution(public void cc.gaojie.aop.Target.save())"></aop:before>
+            <aop:after-returning method="afterRunning" pointcut="execution(* cc.gaojie.aop.*.*(..))"></aop:after-returning>
+            <aop:around method="around" pointcut="execution(* cc.gaojie.aop.*.*(..))"></aop:around>
+            <aop:after-throwing method="afterThrowing" pointcut="execution(* cc.gaojie.aop.*.*(..))"></aop:after-throwing>
+            <aop:after method="after" pointcut="execution(* cc.gaojie.aop.*.*(..))"></aop:after>-->
+            <aop:after-returning method="afterRunning" pointcut-ref="myPointcut"></aop:after-returning>
+            <aop:around method="around" pointcut-ref="myPointcut"></aop:around>
+            <aop:after-throwing method="afterThrowing" pointcut-ref="myPointcut"></aop:after-throwing>
+            <aop:after method="after" pointcut-ref="myPointcut"></aop:after>
         </aop:aspect>
     </aop:config>
 
