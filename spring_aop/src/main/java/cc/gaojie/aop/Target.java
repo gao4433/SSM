@@ -1,8 +1,8 @@
-package cc.gaojie.proxy.jdk;
+package cc.gaojie.aop;
 
 /**
  * @author gaojie  gao4433@qq.com
- * @Description
+ * @Description     目标接口
  * @date 2022/4/25 22:09
  * @since 1.8
  */

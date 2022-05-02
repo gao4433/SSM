@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--目标对象-->
+    <bean id="target" class="cc.gaojie.aop.Target" ></bean>
+
+    <!--切面对象-->
+    <bean id="myAspect" class="cc.gaojie.aop.MyAspect"></bean>
+
+    <!--配置织入：告诉Spring框架哪些方法（切点）需要进行哪些增强-->
+    <aop:config>
+        <!--声明切面：切点+通知（增强）-->
+        <aop:aspect ref="myAspect">
+            <!--访问save()方法时，使用myAspect的before()方法进行前置增强-->
+            <aop:before method="before" pointcut="execution(public void cc.gaojie.aop.Target.save())"></aop:before>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
