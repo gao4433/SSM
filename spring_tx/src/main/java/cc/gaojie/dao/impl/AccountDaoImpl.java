@@ -1,9 +1,15 @@
 package cc.gaojie.dao.impl;
 
 import cc.gaojie.dao.AccountDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
+/**
+ * @author 高杰
+ */
 public class AccountDaoImpl implements AccountDao {
+
 
     private JdbcTemplate jdbcTemplate;
 
