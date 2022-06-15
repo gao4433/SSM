@@ -26,7 +26,7 @@ public class MyBatisTest {
     @Test
     public void test1() throws IOException {
         //加载核心配置文件
-        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        InputStream resourceAsStream = Resources.getResourceAsStream("mybatis-config.xml");
         //获取session工厂对象
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         //获得session对象
@@ -52,7 +52,7 @@ public class MyBatisTest {
         user.setPassword("abc");
 
         //加载核心配置文件
-        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        InputStream resourceAsStream = Resources.getResourceAsStream("mybatis-config.xml");
         //获取session工厂对象
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         //获得session对象
@@ -82,7 +82,7 @@ public class MyBatisTest {
         user.setPassword("cc");
 
         //加载核心配置文件
-        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        InputStream resourceAsStream = Resources.getResourceAsStream("mybatis-config.xml");
         //获取session工厂对象
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         //获得session对象
@@ -106,7 +106,7 @@ public class MyBatisTest {
     public void test4() throws IOException {
 
         //加载核心配置文件
-        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        InputStream resourceAsStream = Resources.getResourceAsStream("mybatis-config.xml");
         //获取session工厂对象
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         //获得session对象
@@ -130,7 +130,7 @@ public class MyBatisTest {
     public void test5() throws IOException {
 
         //加载核心配置文件
-        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        InputStream resourceAsStream = Resources.getResourceAsStream("mybatis-config.xml");
         //获取session工厂对象
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         //获得session对象

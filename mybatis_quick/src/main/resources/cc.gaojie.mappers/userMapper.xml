@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.gaojie.dao.UserDao">
+
+
+    <!--插入操作-->
+    <insert id="insertUser">
+        insert into user
+        values (#{id}, #{username}, #{password})
+    </insert>
+
+    <!--删除操作-->
+    <delete id="deleteUser">
+        delete
+        from user
+        where id = #{id}
+    </delete>
+
+    <!--更新操作-->
+    <update id="updateUser">
+        update user
+        set username=#{username},
+            password=#{password}
+        where id = #{id}
+    </update>
+
+    <!--查询全部（起别名）-->
+    <!--resultSets可忽略-->
+    <!--<select id="listUsers" resultType="cc.gaojie.domain.User" resultSets="java.util.List">
+        /*这里不用起别名是因为我们实体类中的字段名刚好和数据表中一致*/
+        select id, username, password from user
+    </select>-->
+    
+    <!--查询全部（自定义实体类与数据表映射关系）-->
+    <resultMap id="userMap" type="cc.gaojie.domain.User">
+        <!--当我们我们实体类中的字段名刚好和数据表中不一致时才需要这样做-->
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+    </resultMap>
+    <select id="listUsers" resultMap="userMap">
+        select id, username, password from user
+    </select>
+
+    <!-- ============无接口===================   -->
+
+    <!--查询操作-->
+    <select id="findAll" resultType="user">
+        select *
+        from user
+    </select>
+
+    <!--插入操作-->
+    <insert id="save" parameterType="user">
+        insert into user
+        values (#{id}, #{username}, #{password})
+    </insert>
+
+    <!--更新操作-->
+    <update id="modify" parameterType="user">
+        update user
+        set username=#{username},
+            password=#{password}
+        where id = #{id}
+    </update>
+
+    <!--删除操作-->
+    <delete id="delete" parameterType="int">
+        delete
+        from user
+        where id = #{id}
+    </delete>
+
+    <!--条件查询操作-->
+    <select id="selectByName" resultType="user" parameterType="string">
+        select *
+        from user
+        where username = #{name}
+    </select>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
