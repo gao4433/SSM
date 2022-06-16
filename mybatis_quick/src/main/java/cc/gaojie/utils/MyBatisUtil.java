@@ -33,17 +33,27 @@ public class MyBatisUtil {
         return factory;
     }
 
-    public static SqlSession getSqlSession() {
+    private static SqlSession getSqlSession(boolean isAutoCommit) {
         SqlSession sqlSession = local.get();
         if (sqlSession == null) {
-            sqlSession = factory.openSession();
+            sqlSession = factory.openSession(isAutoCommit);
             local.set(sqlSession);
         }
         return sqlSession;
     }
 
+    /**
+     * 手动事务管理
+     **/
+    public static SqlSession getSqlSession() {
+        return getSqlSession(false);
+    }
+
+    /**
+     * 自动事务提交
+     **/
     public static <T extends Object> T getMapper(Class<T> c) {
-        SqlSession sqlSession = getSqlSession();
+        SqlSession sqlSession = getSqlSession(true);
         return sqlSession.getMapper(c);
     }
 

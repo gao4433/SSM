@@ -44,28 +44,8 @@ public class UserDaoTest extends TestCase {
 
 
     public void testDeleteUser() {
-        try {
-            //加载mybatis配置文件
-            InputStream is = Resources.getResourceAsStream("mybatis-config.xml");
-            //获取sqlSessionFactoryBuilder
-            SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-            //获取session工厂对象
-            SqlSessionFactory factory = builder.build(is);
-            //获取session对象
-            SqlSession sqlSession = factory.openSession();
-            ////通过会话获取DAO对象
-            UserDao userDao = sqlSession.getMapper(UserDao.class);
-            ////测试StudentDAO中的方法
-            int i = userDao.deleteUser(1021);
-            ////需要手动提交
-            sqlSession.commit();
-            //断言
-            assertEquals(1, i);
-            ////释放资源
-            sqlSession.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        UserDao userDao = MyBatisUtil.getMapper(UserDao.class);
+        int i = userDao.deleteUser(1021);
     }
 
 
