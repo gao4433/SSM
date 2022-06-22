@@ -10,6 +10,11 @@
         <typeAlias type="cc.gaojie.domain.User" alias="user"></typeAlias>
     </typeAliases>
 
+    <!--plugins标签，用于配置MyBatis插件（分页插件）-->
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin>
+    </plugins>
+
     <!-- 在environments配置数据库连接信息 -->
     <!-- 在environments标签中可以定义多个environment标签，每个environment标签可以定义一套连接配置 -->
     <!-- default属性，用来指定使用哪个environment标签 -->

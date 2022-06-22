@@ -2,11 +2,14 @@ package cc.gaojie.dao;
 
 import cc.gaojie.domain.User;
 import cc.gaojie.utils.MyBatisUtil;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import junit.framework.TestCase;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -175,5 +178,24 @@ public class UserDaoTest extends TestCase {
         //测试StudentDAO中的方法
         int count = userDao.getCount();
         System.out.println(count);
+    }
+
+
+    public void testTestPagePlugins() {
+        UserDao userDao = MyBatisUtil.getMapper(UserDao.class);
+
+        //设置查询第二页的数据，每页4行数据
+        PageHelper.startPage(1, 2);
+
+        List<User> users = userDao.listUsers();
+
+        //pageInfo中就包含了数据及分页信息
+        PageInfo<User> pageInfo = new PageInfo<User>(users);
+
+        List<User> list = pageInfo.getList();
+        for (User user : users) {
+            System.out.println(user);
+        }
+
     }
 }

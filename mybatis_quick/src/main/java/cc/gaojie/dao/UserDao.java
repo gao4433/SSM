@@ -1,6 +1,7 @@
 package cc.gaojie.dao;
 
 import cc.gaojie.domain.User;
+import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.HashMap;
@@ -30,4 +31,6 @@ public interface UserDao {
     public List<User> listUserByPage3(@Param("start") int start, @Param("pageSize") int pageSize);
 
     public int getCount();
+
+    public PageInfo<User> testPagePlugins();
 }
