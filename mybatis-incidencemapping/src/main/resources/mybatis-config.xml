@@ -29,6 +29,7 @@
         <mapper resource="cc.gaojie.mappers\UserMapper.xml"></mapper>
         <mapper resource="cc.gaojie.mappers\DetailMapper.xml"></mapper>
         <mapper resource="cc.gaojie.mappers\ClassMapper.xml"></mapper>
+        <mapper resource="cc.gaojie.mappers\StudentMapper.xml"></mapper>
     </mappers>
 
 </configuration>
