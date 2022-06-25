@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.gaojie.dao.ClassDAO">
+
+    <resultMap id="classMap" type="Clazz">
+        <id column="cid" property="classId"/>
+        <result column="cname" property="className"/>
+        <result column="cdesc" property="classDesc"/>
+        <!--Clazz中的stus是一个List集合，需要用collection标签-->
+        <!--collection标签的ofType属性声明集合中元素的类型-->
+        <collection property="stus" ofType="Student">
+            <result column="sid" property="stuId"/>
+            <result column="sname" property="stuName"/>
+            <result column="sage" property="stuAge"/>
+            <result column="scid" property="stuCid"/>
+        </collection>
+    </resultMap>
+    <select id="queryClass" resultMap="classMap">
+        SELECT cid,
+               cname,
+               cdesc,
+               sid,
+               sname,
+               sage,
+               scid
+        FROM classes c
+                 INNER JOIN students s ON c.cid = s.scid
+        WHERE c.cid = #{cid}
+    </select>
+</mapper>

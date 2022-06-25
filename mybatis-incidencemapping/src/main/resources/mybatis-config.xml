@@ -8,6 +8,8 @@
     <typeAliases>
         <typeAlias type="cc.gaojie.pojo.User" alias="User"></typeAlias>
         <typeAlias type="cc.gaojie.pojo.Detail" alias="Detail"></typeAlias>
+        <typeAlias type="cc.gaojie.pojo.Clazz" alias="Clazz"></typeAlias>
+        <typeAlias type="cc.gaojie.pojo.Student" alias="Student"></typeAlias>
     </typeAliases>
 
     <environments default="mysql">
@@ -22,9 +24,11 @@
         </environment>
     </environments>
 
+    <!--注册映射文件-->
     <mappers>
         <mapper resource="cc.gaojie.mappers\UserMapper.xml"></mapper>
         <mapper resource="cc.gaojie.mappers\DetailMapper.xml"></mapper>
+        <mapper resource="cc.gaojie.mappers\ClassMapper.xml"></mapper>
     </mappers>
 
 </configuration>
