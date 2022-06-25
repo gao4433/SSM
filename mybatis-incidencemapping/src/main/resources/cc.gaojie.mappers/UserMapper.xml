@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.gaojie.dao.UserDAO">
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="userId">
+        insert into users(user_name, user_pwd, user_realname, user_img)
+        values (#{userName}, #{userPwd}, #{userRealName}, #{userImg})
+    </insert>
+
+    <resultMap id="userMap" type="User">
+        <id column="user_id" property="userId"></id>
+        <result column="user_name" property="userName"></result>
+        <result column="user_pwd" property="userPwd"></result>
+        <result column="user_realname" property="userRealName"></result>
+        <result column="user_img" property="userImg"></result>
+        <result column="detail_id" property="detail.detailId"></result>
+        <result column="user_addr" property="detail.userAddr"></result>
+        <result column="user_tel" property="detail.userTel"></result>
+        <result column="user_desc" property="detail.userDesc"></result>
+        <result column="uid" property="detail.userId"></result>
+    </resultMap>
+
+    <resultMap id="userMap2" type="User">
+        <id column="user_id" property="userId"></id>
+        <result column="user_name" property="userName"></result>
+        <result column="user_pwd" property="userPwd"></result>
+        <result column="user_realname" property="userRealName"></result>
+        <result column="user_img" property="userImg"></result>
+        <result column="detail_id" property="detail.detailId"></result>
+        <result column="user_addr" property="detail.userAddr"></result>
+        <result column="user_tel" property="detail.userTel"></result>
+        <result column="user_desc" property="detail.userDesc"></result>
+        <result column="uid" property="detail.userId"></result>
+        <!--association调用子查询，关联一个查询对象-->
+        <association property="detail" column="uid" select="cc.gaojie.dao.DetailDAO.queryDetailByUid" ></association>
+    </resultMap>
+
+    <select id="queryUser" resultMap="userMap2">
+        SELECT user_id,
+               user_name,
+               user_pwd,
+               user_realname,
+               user_img,
+               detail_id,
+               user_addr,
+               user_tel,
+               user_desc,
+               uid
+        FROM users u
+                 INNER JOIN details d ON u.user_id = d.uid
+        WHERE u.user_name = #{user_name}
+    </select>
+
+
+</mapper>
