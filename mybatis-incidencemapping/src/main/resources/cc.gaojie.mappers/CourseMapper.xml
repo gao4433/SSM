@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cc.gaojie.dao.CourseDAO">
+    <resultMap id="courseMapper" type="Course">
+        <id column="course_id" property="courseId"/>
+        <result column="course_name" property="courseName"/>
+        <collection property="stus" ofType="Student">
+            <result column="sid" property="stuId"/>
+            <result column="sname" property="stuName"/>
+            <result column="sage" property="stuAge"/>
+        </collection>
+    </resultMap>
+    <select id="queryCourseById" resultMap="courseMapper">
+        SELECT course_id,
+               course_name,
+               s.sid,
+               sname,
+               sage
+        FROM courses c
+                 INNER JOIN grades g
+                 INNER JOIN students s ON c.course_id = g.cid
+            AND g.sid = s.sid
+        WHERE course_id = #{courseId}
+    </select>
+</mapper>

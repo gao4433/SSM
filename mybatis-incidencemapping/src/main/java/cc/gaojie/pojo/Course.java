@@ -10,17 +10,16 @@ import java.util.List;
 /**
  * @author gaojie  gao4433@qq.com
  * @Description
- * @date 2022/6/25 18:25
+ * @date 2022/6/26 17:07
  * @since 1.8
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Clazz {
-    private int classId;
-    private String className;
-    private String classDesc;
+public class Course {
+    private int courseId;
+    private String courseName;
 
-//    private List<Student> stus;
+    private List<Student> stus;
 }

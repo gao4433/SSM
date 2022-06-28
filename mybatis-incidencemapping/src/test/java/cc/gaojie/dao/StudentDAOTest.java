@@ -4,7 +4,7 @@ import cc.gaojie.pojo.Student;
 import cc.gaojie.utils.MyBatisUtil;
 import junit.framework.TestCase;
 
-public class StudentDAOTest extends TestCase {1
+public class StudentDAOTest extends TestCase {
 
     public void testQueryStudentBySid() {
         StudentDAO studentDAO = MyBatisUtil.getMapper(StudentDAO.class);

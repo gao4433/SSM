@@ -10,6 +10,7 @@
         <typeAlias type="cc.gaojie.pojo.Detail" alias="Detail"></typeAlias>
         <typeAlias type="cc.gaojie.pojo.Clazz" alias="Clazz"></typeAlias>
         <typeAlias type="cc.gaojie.pojo.Student" alias="Student"></typeAlias>
+        <typeAlias type="cc.gaojie.pojo.Course" alias="Course"></typeAlias>
     </typeAliases>
 
     <environments default="mysql">
@@ -30,6 +31,7 @@
         <mapper resource="cc.gaojie.mappers\DetailMapper.xml"></mapper>
         <mapper resource="cc.gaojie.mappers\ClassMapper.xml"></mapper>
         <mapper resource="cc.gaojie.mappers\StudentMapper.xml"></mapper>
+        <mapper resource="cc.gaojie.mappers\CourseMapper.xml"></mapper>
     </mappers>
 
 </configuration>

@@ -4,13 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cc.gaojie.dao.ClassDAO">
 
-    <!--连接查询-->
+<!--  一对多  -->
+<!--
+    &lt;!&ndash;连接查询&ndash;&gt;
     <resultMap id="classMap1" type="Clazz">
         <id column="cid" property="classId"/>
         <result column="cname" property="className"/>
         <result column="cdesc" property="classDesc"/>
-        <!--Clazz中的stus是一个List集合，需要用collection标签-->
-        <!--collection标签的ofType属性声明集合中元素的类型-->
+        &lt;!&ndash;Clazz中的stus是一个List集合，需要用collection标签&ndash;&gt;
+        &lt;!&ndash;collection标签的ofType属性声明集合中元素的类型&ndash;&gt;
         <collection property="stus" ofType="Student">
             <result column="sid" property="stuId"/>
             <result column="sname" property="stuName"/>
@@ -31,7 +33,7 @@
         WHERE c.cid = #{classId}
     </select>
 
-    <!--子查询-->
+    &lt;!&ndash;子查询&ndash;&gt;
     <resultMap id="classMap" type="Clazz">
         <id column="cid" property="classId"/>
         <result column="cname" property="className"/>
@@ -42,5 +44,19 @@
         SELECT cid, cname, cdesc
         FROM classes
         WHERE cid = #{classId}
+    </select>
+-->
+
+<!--  多对一  -->
+    <!--子查询-->
+    <resultMap id="classMap" type="Clazz">
+        <id column="cid" property="classId"/>
+        <result column="cname" property="className"/>
+        <result column="cdesc" property="classDesc"/>
+    </resultMap>
+    <select id="queryClass" resultMap="classMap">
+        SELECT cid, cname, cdesc
+        FROM classes
+        WHERE cid = #{cid}
     </select>
 </mapper>

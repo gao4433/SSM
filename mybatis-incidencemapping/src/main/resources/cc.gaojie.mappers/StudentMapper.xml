@@ -3,6 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cc.gaojie.dao.StudentDAO">
+
+    <!--  一对多  -->
+    <!--
     <resultMap id="studentMap" type="Student">
         <id column="sid" property="stuId"/>
         <result column="sname" property="stuName"/>
@@ -13,5 +16,37 @@
         select sid, sname, sage, scid
         FROM students
         WHERE scid = #{cid}
+    </select>
+    -->
+
+    <!--  多对一  -->
+    <!--
+    &lt;!&ndash;连接查询&ndash;&gt;
+    <resultMap id="studentMap" type="Student">
+        <id column="sid" property="stuId"/>
+        <result column="sname" property="stuName"/>
+        <result column="sage" property="stuAge"/>
+        <result column="cid" property="clazz.classId"/>
+        <result column="cname" property="clazz.className"/>
+        <result column="cdesc" property="clazz.classDesc"/>
+    </resultMap>
+    <select id="queryStudentBySid" resultMap="studentMap">
+        SELECT sid, sname, sage, cid, cname, cdesc
+        FROM students s
+                 INNER JOIN classes c ON s.scid = c.cid
+        WHERE s.sid = #{stuId}
+    </select>
+    -->
+    <!--子查询-->
+    <resultMap id="studentMap" type="Student">
+        <id column="sid" property="stuId"/>
+        <result column="sname" property="stuName"/>
+        <result column="sage" property="stuAge"/>
+        <association property="clazz" select="cc.gaojie.dao.ClassDAO.queryClass" column="scid"/>
+    </resultMap>
+    <select id="queryStudentBySid" resultMap="studentMap">
+        SELECT sid, sname, sage,scid
+        FROM students
+        WHERE sid = #{sid}
     </select>
 </mapper>
