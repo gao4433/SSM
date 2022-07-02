@@ -3,6 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cc.gaojie.dao.CourseDAO">
+    <!--  连接查询  -->
+    <!--
     <resultMap id="courseMapper" type="Course">
         <id column="course_id" property="courseId"/>
         <result column="course_name" property="courseName"/>
@@ -22,6 +24,24 @@
                  INNER JOIN grades g
                  INNER JOIN students s ON c.course_id = g.cid
             AND g.sid = s.sid
+        WHERE course_id = #{courseId}
+    </select>
+    -->
+
+    <!--  子查询  -->
+    <resultMap id="courseMapper" type="Course">
+        <id column="course_id" property="courseId"/>
+        <result column="course_name" property="courseName"/>
+        <collection property="stus" select="cc.gaojie.dao.StudentDAO.queryStudentByCourseId" column="course_id">
+            <result column="s.sid" property="stuId"/>
+            <result column="sname" property="stuName"/>
+            <result column="sage" property="stuAge"/>
+        </collection>
+    </resultMap>
+    <select id="queryCourseById" resultMap="courseMapper">
+        SELECT course_id,
+               course_name
+        FROM courses
         WHERE course_id = #{courseId}
     </select>
 </mapper>

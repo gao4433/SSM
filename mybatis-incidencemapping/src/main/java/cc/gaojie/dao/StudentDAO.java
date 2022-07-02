@@ -11,4 +11,6 @@ import cc.gaojie.pojo.Student;
 public interface StudentDAO {
     //    public Student queryStudentByCid(int cid);
     public Student queryStudentBySid(String sid);
+
+    public Student queryStudentByCourseId(int courseId);
 }

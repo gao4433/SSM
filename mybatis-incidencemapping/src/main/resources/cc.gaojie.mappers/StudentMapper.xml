@@ -49,4 +49,17 @@
         FROM students
         WHERE sid = #{sid}
     </select>
+
+<!--  多对多  -->
+    <select id="queryStudentByCourseId" resultType="Student">
+        SELECT
+            s.sid stuId,
+            sname stuName,
+            sage stuAge
+        FROM
+            students s
+                INNER JOIN grades g ON g.sid = s.sid
+        WHERE
+            g.cid = #{course_id}
+    </select>
 </mapper>

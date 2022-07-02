@@ -21,6 +21,5 @@ public class Student {
     private String stuId;
     private String stuName;
     private int stuAge;
-    private List<Course> courses;
 
 }
