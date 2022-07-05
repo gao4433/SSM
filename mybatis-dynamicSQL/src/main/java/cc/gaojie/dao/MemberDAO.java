@@ -40,7 +40,7 @@ public interface MemberDAO {
     public List<Member> searchMemberByCity(List<String> cities);
 //
 //    //根据昵称查询用户信息——模糊查询
-//    public List<Member> searchMemberByNick(@Param("keyWord") String keyWord);
+    public List<Member> searchMemberByNick(@Param("keyWord") String keyWord);
 //
 //    public Member queryMemberById(int mid);
 //

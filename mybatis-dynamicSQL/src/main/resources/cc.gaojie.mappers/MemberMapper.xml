@@ -36,4 +36,11 @@
             #{cityName}
         </foreach>
     </select>
+
+    <!--如果参数时String类型，需要parameterType声明参数类型-->
+    <select id="searchMemberByNick" parameterType="java.lang.String" resultMap="memberMap">
+        select member_id,member_nick,member_gender,member_age,member_city
+        from members
+        where member_nick like '%${keyWord}%'
+    </select>
 </mapper>

@@ -55,4 +55,13 @@ public class MemberDAOTest extends TestCase {
         }
     }*/
 
+    @Test
+    public void testSearchMemberByNick(){
+        MemberDAO memberDAO = MyBatisUtil.getMapper(MemberDAO.class);
+        List<Member> members = memberDAO.searchMemberByNick("珊");
+        for (Member m: members) {
+            System.out.println(m);
+        }
+    }
+
 }
